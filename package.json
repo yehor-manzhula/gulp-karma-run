@@ -1,0 +1,24 @@
+{
+  "name": "gulp-karma-run",
+  "version": "1.0.0",
+  "description": "gulp karma plugin without shit and deprecated calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egor-manjula/gulp-karma-run.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egor-manjula/gulp-karma-run/issues"
+  },
+  "homepage": "https://github.com/egor-manjula/gulp-karma-run#readme",
+  "dependencies": {
+    "event-stream": "^3.3.2",
+    "karma": "^0.13.15",
+    "lodash": "^3.10.1"
+  }
+}
