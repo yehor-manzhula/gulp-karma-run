@@ -18,7 +18,6 @@
   "homepage": "https://github.com/egor-manjula/gulp-karma-run#readme",
   "dependencies": {
     "event-stream": "^3.3.2",
-    "karma": "^0.13.15",
     "lodash": "^3.10.1"
   }
 }

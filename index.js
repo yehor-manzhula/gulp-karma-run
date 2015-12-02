@@ -1,10 +1,9 @@
 var eventStream = require('event-stream');
-var karma = require('karma');
 var _ = require('lodash');
 
 module.exports = run;
 
-function run(config) {
+function run(karma, config) {
     var stream = eventStream.through(collectFiles, startKarma);
 
     return stream;
