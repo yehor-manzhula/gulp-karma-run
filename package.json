@@ -1,7 +1,7 @@
 {
   "name": "gulp-karma-run",
-  "version": "1.0.0",
-  "description": "gulp karma plugin without shit and deprecated calls",
+  "version": "1.0.1",
+  "description": "gulp karma plugin files from stream to karma",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/egor-manjula/gulp-karma-run#readme",
   "dependencies": {
-    "event-stream": "^3.3.2",
-    "lodash": "^3.10.1"
+    "event-stream": "^3.3.2"
   }
 }

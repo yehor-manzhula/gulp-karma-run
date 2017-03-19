@@ -1,20 +1,28 @@
 # gulp-karma-run
-gulp karma plugin without shit and deprecated calls
 
-var config = {
-    configFile: path.karma,
-    singleRun : true
-};
+Gulp karma plugin without shit and deprecated calls
+
+
+### Usage
+```
+const karmaRun = require('gulp-karma-run');
 
 /**
- * Run test once and exit
+ * Simple usage
  */
-gulp.task('test:frontend', function (done) {
-    gulp.src('./test/**/**.spec.js').pipe(gulpKarmaRun(config))
-            .on('end', done)
-            .on('error', done);
-});
+gulp.task('test:frontend', () => gulp.src('./test/**/**.spec.js').pipe(karmaRun()));
 
-gulp.task('test:frontend', function (done) {
-    return gulp.src('./test/**/**.spec.js').pipe(gulpKarmaRun(config));
+/**
+ * Override config
+ * and custom handlers
+ */
+gulp.task('test:frontend', (done) => {
+    gulp.src('./test/**/**.spec.js')
+        .pipe(karmaRun({
+            configFile: './karma.conf.js', // default is process.cwd()/karma.conf.js
+            singleRun: true // default is true
+        }))
+        .on('end', () => console.log('Karma terminated successfully'))
+        .on('error', (errorCode) => console.log(`Karma terminated with error code ${errorCode}`));
 });
+```

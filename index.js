@@ -1,35 +1,22 @@
-var eventStream = require('event-stream');
-var _ = require('lodash');
+const eventStream = require('event-stream');
+const path = require('path');
 
-module.exports = run;
+module.exports = (karma, config = {}) => {
+    const files = [];
 
-function run(karma, config) {
-    var stream = eventStream.through(collectFiles, startKarma);
+    return eventStream.through((file) => files.push(file.path),
+        function() {
+            this.pause();
 
-    return stream;
+            config = Object.assign({
+                files,
+                configFile: path.resolve(`${process.cwd()}/karma.conf.js`),
+                singleRun: true
+            }, config);
 
-    function collectFiles(file) {
-        collectFiles.files = collectFiles.files || [];
-        collectFiles.files.push(file.path);
-    }
-
-    function startKarma() {
-        this.pause();
-
-        config = _.merge({
-            files     : collectFiles.files,
-            configFile: 'karma.conf.js',
-            singleRun : true
-        }, config);
-
-        karma.Server.start(config, function (code) {
-            var method = 'end';
-
-            if (code) {
-                method = 'error';
-            }
-
-            stream.emit(method, code);
+            karma.Server.start(config, (code) => {
+                this.resume();
+                this.emit(code ? 'error' : 'end', code)
+            });
         });
-    }
-}
+};
