@@ -10,7 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/egor-manjula/gulp-karma-run.git"
   },
-  "author": "",
+  "keywords": ["karma", "gulp", "src", "stream"],
+  "author": "Egor Manhzula",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/egor-manjula/gulp-karma-run/issues"
